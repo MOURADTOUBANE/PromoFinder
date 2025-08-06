@@ -1,8 +1,16 @@
 'use client';
 import Link from "next/link";       
 import Styles from "./css/nav.module.css";
+import { FormEvent } from "react";
 
-export default function Navbar() {
+type Props = {
+  query: string;
+  setQuery: (q: string) => void;
+  handleSearch: (e: FormEvent<HTMLFormElement>) => void;
+  loading: boolean;
+}
+
+export default function Navbar({query, setQuery, handleSearch, loading}:Props) {
   return (
     <nav className="navbar bg-white shadow-sm py-3 px-4">
       <div className="container-fluid d-flex justify-content-between align-items-center">
@@ -17,14 +25,23 @@ export default function Navbar() {
         </div>
 
         <div className="flex-grow-1 px-3 d-none d-md-block" style={{ maxWidth: "600px", margin: "0 auto" }}>
-          <form className="d-flex">
-            <input
-              type="search"
-              className={`form-control rounded-pill px-4 ${Styles.search}`}
-              placeholder="Search deals..."
-              aria-label="Search"
-            />
-          </form>
+       <form className="d-flex" onSubmit={handleSearch}>
+  <input
+    type="search"
+    className="form-control rounded-pill px-4 "
+    placeholder="Search deals..."
+    aria-label="Search"
+    value={query}
+    onChange={(e) => setQuery(e.target.value)}
+  />
+  <button
+    className={Styles.submit}
+    type="submit"
+    disabled={loading}
+  >
+    {loading ? "Searching..." : "Search"}
+  </button>
+</form>
         </div>
 
    

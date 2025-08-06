@@ -28,7 +28,13 @@
 }
 
 
-.search:hover{
-  border-color: blueviolet;
-  border-width: 3px;
+
+
+.submit{
+  background: linear-gradient(135deg, #8e2de2, #c471ed); 
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 10px;
 }
