@@ -81,7 +81,28 @@ export default function Products({ results, loading }: ProductsProps) {
             </div>
           );
         })}
+
       </div>
+        {/* Feedback Link - added here */}
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSf15-awwLAA83qNTyJkRDbTngRVOVgdt4IK1gRFRKusWT_Z2w/viewform?usp=header"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              padding: '10px 15px',
+              backgroundColor: '#0070f3',
+              color: 'white',
+              borderRadius: '5px',
+              textDecoration: 'none',
+              fontWeight: '600',
+              cursor: 'pointer',
+              boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
+            }}
+          >
+            💬 Give Us Your Feedback
+          </a>
+          </div>
     </div>
       </>
   );
