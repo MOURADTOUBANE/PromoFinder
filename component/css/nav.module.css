@@ -1,40 +1,89 @@
+
 .logo {
     background:  linear-gradient(135deg, hsl(262 83% 58%), hsl(280 100% 70%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+ 
 }
-.login {
-  background: linear-gradient(135deg, #8e2de2, #c471ed); 
-  color: #fff;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 0.5rem 1.6rem;
+
+.navbar {
+  background-color: white;
+ 
+}
+
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.searchForm {
+  display: flex;
+  flex: 1;
+  max-width: 600px;
+  gap: 10px;
+}
+
+.submit {
+  background-color: blueviolet;
+  color: white;
   border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.submit:hover {
+  background-color: #e09900;
+}
+
+
+.loginContainer {
+  display: flex;
+  align-items: center;
+}
+
+.login {
+  background: linear-gradient(135deg, hsl(262 83% 58%), hsl(280 100% 70%));
+  color: white;
+  padding: 0.5rem 1.2rem;
   border-radius: 10px;
   text-decoration: none;
-  cursor: pointer;
-  transition: transform 0.3s ease, filter 0.2s ease;
-  box-shadow: 0 3px 15px rgba(218, 23, 236, 0.326);
+  font-weight: bold;
+   box-shadow: 0 0 10px rgba(189, 7, 218, 0.511);
+ transition: all 0.3s ease;
+  transform: translateY(0); 
 }
 
 .login:hover {
-  transform: translateY(-2px) scale(1.02);
-  filter: brightness(1.1);
+  opacity: 0.95;
   color: white;
+  transform: translateY(-3px) scale(1.03);
+ 
 }
 
-.login:active {
-  transform: scale(0.95);
-}
 
+@media (max-width: 768px) {
+  
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
+  .logo a {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .res{
+    display: flex;
+  }
 
+  .hidden{
+    display: none !important;
+  }
 
-.submit{
-  background: linear-gradient(135deg, #8e2de2, #c471ed); 
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-left: 10px;
 }

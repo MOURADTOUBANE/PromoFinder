@@ -5,7 +5,7 @@ import NavStyles from "./css/nav.module.css";
 export default function Hero(){
     return(
         <>
-        <div className="row ms-3 mt-5">
+        <div className={`row ms-3 mt-5 ${Styles.hero}`}>
             <div className="col-md-6">
                 <div >
                 <h1 className={Styles.title}>
@@ -30,10 +30,10 @@ export default function Hero(){
 
 
             </div>
-        <div className="col-md-6 mb-5">
+        <div className="col-md-6 mb-5 ">
             <Link href="#" >
             <img 
-             className={`${Styles.image} img-fluid`}
+             className={`${Styles.image} img-fluid `}
             src="/images/deals-hero.jpg"
             alt="Deals Hero"
             />

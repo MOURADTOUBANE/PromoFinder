@@ -1,6 +1,7 @@
 'use client';
 import Styles from "./css/products.module.css";
 import SecondStyles from "./css/nav.module.css";
+import { useState } from "react";
 
 type ProductsProps = {
   results: any[];
@@ -8,11 +9,16 @@ type ProductsProps = {
 };
 
 export default function Products({ results, loading }: ProductsProps) {
-  
+  const [selectedSite, setSelectedSite] = useState("All Sites");
    
   if (loading) return <p className="text-center mt-4">Loading...</p>;
   if (!results.length) return <p className="text-center mt-4">No results found.</p>;
 
+    const filteredResults = results.filter((item) => {
+    if (selectedSite === "All Sites") return true;
+   
+    return item.link.toLowerCase().includes(selectedSite.toLowerCase().replace(' ', ''));
+  });
   return (
     <>
     <h1 className={`mt-5 mb-5 ${Styles.title} ${SecondStyles.logo}`}>Products</h1>
@@ -21,13 +27,27 @@ export default function Products({ results, loading }: ProductsProps) {
       {/* Filter Placeholder */}
       <div className="row mb-4">
         <div className="col-12">
-          {/* You can replace this with actual filter options later */}
-          <p className="text-muted">🔍 Filters coming soon...</p>
+       
+           <div className={`dropdown mb-5 ${Styles.dropdown}`}>
+            <p >Filter Sites</p>
+             <select
+                className="form-select"
+                value={selectedSite}
+                onChange={(e) => setSelectedSite(e.target.value)}
+               >
+              <option value="All Sites">All Sites</option>
+              <option value="Amazon">Amazon</option>
+              <option value="Ali Express">Ali Express</option>
+              <option value="Temu">Temu</option>
+              <option value="Jumia">Jumia</option>
+             </select>
+           </div>
+          
         </div>
       </div>
 
       <div className="row">
-        {results.map((item, i) => {
+        {filteredResults.map((item, i) => {
           const image = item.pagemap?.cse_image?.[0]?.src;
           const name = item.title;
           const description = item.snippet;
@@ -51,10 +71,10 @@ export default function Products({ results, loading }: ProductsProps) {
                   <a
                     href={link}
                     target="_blank"
-                    className="btn btn-primary"
+                    className={Styles.button}
                     rel="noopener noreferrer"
                   >
-                    See Details
+                    View Deal
                   </a>
                 </div>
               </div>

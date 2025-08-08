@@ -1,14 +1,26 @@
 'use client';
 import Hero from '@/component/hero';
 import Navbar from '../component/nav';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Products from '@/component/products';
+import Footer from '@/component/footer';
 
 export default function Home() {
 
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const[loading, setLoading] = useState(false);
+
+  useEffect(() =>{
+    const fetchDefault = async () => {
+      setLoading(true);
+      const res = await fetch (`/api/search?q=book`);
+      const data = await res.json();
+      setResults(data.items || []);
+      setLoading(false);
+    };
+    fetchDefault();
+  },[]);
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,6 +46,8 @@ export default function Home() {
   results={results}
   loading={loading}
   />
+
+  <Footer />
   </>
   );
 }
