@@ -1,11 +1,13 @@
 import Link from "next/link" ;
 import Styles from "./css/hero.module.css";
 import NavStyles from "./css/nav.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBagShopping, faUsers, faMoneyBillTrendUp } from "@fortawesome/free-solid-svg-icons";
 
 export default function Hero(){
     return(
-        <>
-        <div className={`row ms-3 mt-5 ${Styles.hero}`}>
+        <>         
+        <div className={`row px-3  ${Styles.hero}`}>
             <div className="col-md-6">
                 <div >
                 <h1 className={Styles.title}>
@@ -21,7 +23,7 @@ export default function Hero(){
 
                 <div className="d-flex mt-4 mb-5 ">
                     <Link
-                       href="#"
+                       href="/deals"
                         className={NavStyles.login}>
                        Explore Deals
                     </Link>
@@ -44,19 +46,28 @@ export default function Hero(){
        
         <div className={`d-flex justify-content-around  ${Styles.infos}`}>
 
-            <div className="partners">
-               <h1>50+</h1>
-               <p >Partner Stores</p>
+            <div className="Deals">
+                <div className={Styles.icon}>
+                <FontAwesomeIcon icon={faBagShopping}  />
+                </div>
+               <h1>10,000+</h1>
+               <p >Active Deals</p>
             </div>
 
-            <div className="savings">
-                <h1>70%</h1>
-                <p>Max Savings</p>
+            <div className="Bonus">
+                 <div className={Styles.icon}>
+                <FontAwesomeIcon icon={faUsers} />
+                </div>
+                <h1>50k+</h1>
+                <p>Happy Users</p>
             </div>
 
-            <div className="updates">
-                <h1>24/7</h1>
-                <p>Updated</p>
+            <div className="MoneySave">
+                 <div className={Styles.icon}>
+                <FontAwesomeIcon icon={faMoneyBillTrendUp} />
+                </div>
+                <h1>$2M</h1>
+                <p>Money Saved</p>
             </div>
 
         </div>

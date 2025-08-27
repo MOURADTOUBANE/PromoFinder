@@ -4,6 +4,7 @@ import Navbar from '../component/nav';
 import { useEffect, useState } from 'react';
 import Products from '@/component/products';
 import Footer from '@/component/footer';
+import Features from '@/component/features';
 
 export default function Home() {
 
@@ -34,20 +35,10 @@ export default function Home() {
 
   return (
   <>
-  <Navbar
-   
-   query={query}
-   setQuery={setQuery}
-   handleSearch={handleSearch}
-   loading={loading}
-  />
+  <Navbar/>
   <Hero />
-  <Products
-  results={results}
-  loading={loading}
-  />
-
-  <Footer />
+  <Features />
+ 
   </>
   );
 }

@@ -1,52 +1,78 @@
 'use client';
 import Link from "next/link";
 import Styles from "./css/nav.module.css";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearchengin } from '@fortawesome/free-brands-svg-icons';
+import { faHouse, faMagnifyingGlass, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { usePathname } from "next/navigation";
 
-type Props = {
-  query: string;
-  setQuery: (q: string) => void;
-  handleSearch: (e: FormEvent<HTMLFormElement>) => void;
-  loading: boolean;
-}
+export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-export default function Navbar({ query, setQuery, handleSearch, loading }: Props) {
+  const pathname = usePathname();
+  const isActive = (path: string) => pathname == path;
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className={`navbar fixed-top shadow-sm py-3 px-4  ${Styles.navbar}`}>
-      <div className={`container-fluid ${Styles.container}`}>
-     
-        <div className={Styles.logo}>
-          <Link href="/" className="navbar-brand fw-bold fs-5  mb-0">
-            PromoFinder
-          </Link>
+      {/*logo*/}
+      <div className={Styles.brand}>
+        <div className={Styles.icon}>
+          <FontAwesomeIcon icon={faSearchengin} className="ms-2 mt-2"/>
         </div>
-
-        <form className={Styles.searchForm} onSubmit={handleSearch}>
-          <input
-            type="search"
-            className="form-control rounded-pill px-4"
-            placeholder="Search deals..."
-            aria-label="Search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button
-            className={Styles.submit}
-            type="submit"
-            disabled={loading}
-          >
-            {loading ? "Searching..." : "Search"}
-          </button>
-        </form>
-
-      
-        <div className={Styles.hidden}>
-          <Link href="/login" className={Styles.login}>
-            Login
-          </Link>
-        </div>
-  
+        <Link href="/" className={`navbar-brand fw-bold fs-5 mb-0 ms-1 ${Styles.logo}`}>
+          DealHunter
+        </Link>
       </div>
+
+      {/* Mobile hamburger button */}
+      <button 
+        className={Styles.hamburger}
+        onClick={toggleMenu}
+        aria-label="Toggle menu"
+      >
+        <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
+      </button>
+        
+     {/*Links*/}
+<div className={`${Styles.links} ${isMenuOpen ? Styles.open : ''}`}>
+  <ul>
+    <li className={isActive("/") ? Styles.active : ""}>
+      <FontAwesomeIcon icon={faHouse} />
+      <Link href="/" className={Styles.page} onClick={closeMenu}>Home</Link>
+    </li>
+    <li className={isActive("/deals") ? Styles.active : ""}>
+      <FontAwesomeIcon icon={faMagnifyingGlass} />
+      <Link href="/deals" className={Styles.page} onClick={closeMenu}>Deals</Link>
+    </li>
+    <li className={isActive("/favorite") ? Styles.active : ""}>
+      <FontAwesomeIcon icon={faHeart} />
+      <Link href="" className={Styles.page} onClick={closeMenu}>Favorite</Link>
+    </li>
+    <li className={isActive("/support") ? Styles.active : ""}>
+      <FontAwesomeIcon icon={faEnvelope} />
+      <Link href="/support" className={Styles.page} onClick={closeMenu}>Support</Link>
+    </li>
+  </ul>
+  {/* Mobile Sign In (inside dropdown menu) */}
+  <div className={Styles.mobileSignIn}>
+    <Link href="/login">Sign In</Link>
+  </div>
+</div>
+
+{/* Desktop Sign In */}
+<div className={Styles.loginContainer}>
+  <Link href="/login" className={Styles.login}>Sign In</Link>
+</div>
     </nav>
   );
 }

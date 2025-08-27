@@ -1,0 +1,476 @@
+.hero{
+        background: linear-gradient(135deg, hsl(262 83% 58%), hsl(280 100% 70%));
+        padding: 100px;
+        color: white;
+}
+
+.mainTitle{
+    font-weight: 700;    
+    font-size: 45;
+    margin-top: 70px ;
+}
+
+.info{
+    color: lavender;
+    font-size: 20;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+
+.contact {
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
+  max-width: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: #e0e0e0;
+}
+
+
+.icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem auto;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.card:hover .icon {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+}
+
+
+.icon svg {
+  font-size: 1.8rem;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+
+.card h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+
+.card p {
+  color: #718096;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+
+.card p:first-of-type {
+  color: #4a5568;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+
+.card p:last-of-type {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+
+.card:nth-child(2) .icon {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
+}
+
+.card:nth-child(2):hover .icon {
+  box-shadow: 0 6px 25px rgba(240, 147, 251, 0.4);
+}
+
+.card:nth-child(3) .icon {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+}
+
+.card:nth-child(3):hover .icon {
+  box-shadow: 0 6px 25px rgba(79, 172, 254, 0.4);
+}
+
+.form {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  font-family: Arial, sans-serif;
+}
+
+.form h1 {
+  font-size: 22px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 18px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fafafa;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.form input[type="text"]:focus,
+.form input[type="email"]:focus,
+.form textarea:focus {
+  border-color: #7a5af5;
+  background: #fff;
+}
+
+.form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form button {
+  width: 100%;
+  padding: 14px;
+  background: #7a5af5;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.form button:hover {
+  background: #693ee0;
+}
+
+.questionsSection {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 80vh;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.title h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.title p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.cards {
+    display: flex;
+    gap: 30px;
+    padding: 40px 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+
+.cards::-webkit-scrollbar {
+    height: 8px;
+}
+
+.cards::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.cards::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.cards::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+
+.answerCard {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    min-width: 300px;
+    max-width: 350px;
+    flex-shrink: 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+.answerCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s;
+}
+
+.answerCard:hover::before {
+    left: 100%;
+}
+
+.answerCard:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.answerCard:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.answerCard:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.answerCard:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.answerCard:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 1);
+}
+
+.answerCard h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 15px;
+    line-height: 1.3;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.answerCard p {
+    font-size: 1rem;
+    color: #4a5568;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInCards {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.cards::-webkit-scrollbar {
+    height: 8px;
+}
+
+.cards::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.cards::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.cards::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+
+@media (max-width: 768px) {
+  .hero{
+        padding: 50px;
+        color: white;
+}
+
+ .mainTitle{
+    font-weight: 700;    
+    font-size: 40;
+}
+
+.info{
+    color: lavender;
+    font-size: 11;
+    font-weight: 500;
+}
+
+  .contact {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .card {
+    max-width: 100%;
+    margin: 0 1rem;
+  }
+  
+  .icon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .icon svg {
+    font-size: 1.6rem;
+  }
+  
+  .card h1 {
+    font-size: 1.3rem;
+  }
+
+    .form {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .form h1 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .form input[type="text"],
+  .form input[type="email"],
+  .form textarea {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .form button {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+    .cards {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .answerCard {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+
+
+
+@media (max-width: 480px) {
+  .card {
+    padding: 2rem 1rem;
+  }
+  
+  .icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .icon svg {
+    font-size: 1.4rem;
+  }
+}

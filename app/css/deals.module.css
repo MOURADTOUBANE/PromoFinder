@@ -1,0 +1,329 @@
+.hero{
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 20px;
+}
+
+.title{
+  margin-top: 100px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 30;
+}
+
+.searchBar {
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    background:  #f8f9fa;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+
+.searchIcon {
+    font-size: 1.2rem;
+    color: #888;
+    margin-right: 0.7rem;
+}
+
+.searchInput {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+    width: 100%;
+    box-shadow: none;
+}
+
+.mobileFilterButton {
+    display: none;
+    background: #6f42c1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    margin: 20px;
+    cursor: pointer;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.mobileFilterButton:hover {
+    background: #5a359a;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #6f42c1;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.filters svg {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.filters p {
+  margin: 0;
+}
+
+.FilterSites {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border: 1px solid #e9ecef;
+}
+
+.FilterSites p {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 12px;
+  font-size: 14px;
+  margin-top: 0;
+}
+
+.FilterSites select {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 12px 16px;
+  width: 100%;
+  font-size: 14px;
+  color: #495057;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.FilterSites select:focus {
+  border-color: #6f42c1;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+}
+
+.FilterCategory {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border: 1px solid #e9ecef;
+}
+
+.FilterCategory p {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 12px;
+  font-size: 14px;
+  margin-top: 0;
+}
+
+.FilterCategory select {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 12px 16px;
+  width: 100%;
+  font-size: 14px;
+  color: #495057;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.FilterCategory select:focus {
+  border-color: #6f42c1;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+}
+
+.filterSection {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border: 1px solid #e9ecef;
+}
+
+.filterLabel {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.sliderContainer {
+  margin-top: 16px;
+}
+
+.sliderLabels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #6c757d;
+}
+
+.customRange {
+  width: 100%;
+  height: 6px;
+  background: #e9ecef;
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.customRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #6f42c1;
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.customRange::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #6f42c1;
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  border: none;
+}
+
+.customRange::-moz-range-track {
+  background: #e9ecef;
+  height: 6px;
+  border-radius: 3px;
+}
+
+.filterContainer {
+  max-width: 300px;
+  width: 100%;
+  border-right: 1px solid #e9ecef;
+  padding: 20px;
+  height: fit-content;
+}
+
+.mobileFilterOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: none;
+}
+
+.mobileFilterOverlay.show {
+  display: block;
+}
+
+.mobileFilterPanel {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100vh;
+  background: white;
+  z-index: 1001;
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mobileFilterPanel.open {
+  left: 0;
+}
+
+.mobileFilterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e9ecef;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1002;
+}
+
+.mobileFilterHeader h3 {
+  margin: 0;
+  color: #495057;
+  font-weight: 600;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: #6c757d;
+}
+
+.closeButton:hover {
+  color: #495057;
+}
+
+.mobileFilterContent {
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .mobileFilterButton {
+    display: flex;
+  }
+
+  .filterContainer {
+    display: none;
+  }
+
+  .title {
+  display: none;
+  }
+
+  .searchBar {
+    margin-top: 5.5rem;
+    margin-left: 15px;
+    margin-right: 15px;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+    margin-top: 30px;
+  }
+  
+  .mobileFilterPanel {
+    width: 280px;
+    left: -280px;
+  }
+}
