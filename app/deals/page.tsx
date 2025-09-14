@@ -60,7 +60,6 @@ export default function Deals() {
 
     return (
         <>
-            <Navbar />
             
             <div className={Styles.hero}>
                 <h1 className={Styles.title}>Find Amazing Deals</h1>

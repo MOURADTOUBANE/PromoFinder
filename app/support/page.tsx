@@ -56,7 +56,6 @@ export default function Support (){
   }, [isPaused, enableScroll]);
     return(
         <>
-        <Navbar />
 
         <div className= {`text-center ${Styles.hero}`}>
             <h1 className={Styles.mainTitle}>Get In Touch</h1>

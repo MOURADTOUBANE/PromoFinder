@@ -1,3 +1,4 @@
+import Navbar from '@/component/nav';
 import Script from 'next/script';
 
 export const metadata = {
@@ -39,6 +40,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
       </head>
       <body>
+        <header>
+            <Navbar/>
+        </header>
         {children}
 
         <Script

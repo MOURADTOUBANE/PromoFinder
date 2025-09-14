@@ -1,0 +1,194 @@
+
+.registerContainer {
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.registerCard {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  animation: slideUp 0.6s ease-out;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: none;
+  margin-top: 5rem;
+  padding: 0 5px;
+
+
+}
+
+.registerIcon {
+  width: 68px;
+  height: 68px;
+  background: linear-gradient(135deg, #8B5CF6, #A855F7);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.registerTitle {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #6B46C1;
+}
+
+.registerSubtitle {
+  color: #6B7280;
+  margin-bottom: 0;
+}
+
+.registerInput {
+  border-color: #E5E7EB;
+  border-radius: 12px;
+  font-size: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 40px;
+  border-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.registerInput:focus {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 0 0 0.2rem rgba(139, 92, 246, 0.25) !important;
+  outline: none;
+}
+
+.registerInput.isInvalid {
+  border-color: #dc3545;
+}
+
+.registerCheckbox {
+  width: 20px;
+  height: 20px;
+  border-color: #8B5CF6;
+  border-radius: 4px;
+  border-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.registerCheckbox:checked {
+  background-color: #8B5CF6 !important;
+  border-color: #8B5CF6 !important;
+}
+
+.registerCheckbox:focus {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 0 0 0.2rem rgba(139, 92, 246, 0.25) !important;
+  outline: none;
+}
+
+.registerCheckbox.borderDanger {
+  border-color: #dc3545;
+}
+
+.registerTermsLabel {
+  color: #6B7280;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.registerLink {
+  color: #8B5CF6;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.registerLink:hover {
+  color: #7C3AED;
+  text-decoration: underline;
+}
+
+.registerSubmitBtn {
+  background: linear-gradient(135deg, #8B5CF6, #A855F7);
+  border: none;
+  border-radius: 12px;
+  padding: 15px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  cursor: pointer;
+}
+
+.registerSubmitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+}
+
+.registerSubmitBtn:active {
+  transform: translateY(0) !important;
+}
+
+.registerError {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.registerFooterText {
+  color: #6B7280;
+  margin-bottom: 0;
+}
+
+.registerSigninLink {
+  color: #8B5CF6;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.registerSigninLink:hover {
+  color: #7C3AED;
+  text-decoration: underline;
+}
+
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .registerContainer {
+    padding: 1rem;
+  }
+  
+  .registerCard .cardBody {
+    padding: 2rem 1.5rem !important;
+  }
+  
+  .registerIcon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .registerIcon svg {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .registerInput {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+

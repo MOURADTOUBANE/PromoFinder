@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
+{/*
+  import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 
 export async function GET(req: NextRequest) {
@@ -32,3 +33,4 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Failed to fetch products", details: error });
   }
 }
+*/}

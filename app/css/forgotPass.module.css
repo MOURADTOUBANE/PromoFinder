@@ -1,0 +1,253 @@
+/* Forgot Password Form Module Styles */
+.forgotContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.forgotCard {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  animation: slideUp 0.6s ease-out;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: none;
+  width: 100%;
+  max-width: 440px;
+  margin: 5rem auto;
+}
+
+.forgotIcon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #8B5CF6, #A855F7);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forgotSuccessIcon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #10B981, #059669);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forgotTitle {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #6B46C1;
+  font-size: 1.8rem;
+}
+
+.forgotSubtitle {
+  color: #6B7280;
+  margin-bottom: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.forgotInput {
+  border-color: #E5E7EB;
+  border-radius: 12px;
+  font-size: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 40px;
+  border-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.forgotInput:focus {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 0 0 0.2rem rgba(139, 92, 246, 0.25) !important;
+  outline: none;
+}
+
+.forgotInput.isInvalid {
+  border-color: #dc3545;
+}
+
+.forgotSubmitBtn {
+  background: linear-gradient(135deg, #8B5CF6, #A855F7);
+  border: none;
+  border-radius: 12px;
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  cursor: pointer;
+}
+
+.forgotSubmitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+}
+
+.forgotSubmitBtn:active {
+  transform: translateY(0) !important;
+}
+
+.forgotBackLink {
+  color: #8B5CF6;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.forgotBackLink:hover {
+  color: #7C3AED;
+  text-decoration: underline;
+  transform: translateX(-2px);
+}
+
+.forgotError {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.forgotInstructions {
+  background: rgba(139, 92, 246, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.forgotInstructionsTitle {
+  color: #6B46C1;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.forgotInstructionsList {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #6B7280;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.forgotInstructionsList li {
+  margin-bottom: 0.5rem;
+}
+
+.forgotInstructionsList li:last-child {
+  margin-bottom: 0;
+}
+
+.forgotResendText {
+  color: #6B7280;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.forgotResendBtn {
+  color: #8B5CF6;
+  background: none;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.forgotResendBtn:hover {
+  color: #7C3AED;
+}
+
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pulse animation for success icon */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.5);
+  }
+  100% {
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+  }
+}
+
+.forgotSuccessIcon {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .forgotContainer {
+    padding: 1rem;
+  }
+  
+  .forgotCard {
+    margin: 5rem auto;
+    max-width: 100%;
+  }
+  
+  .forgotIcon,
+  .forgotSuccessIcon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .forgotIcon svg,
+  .forgotSuccessIcon svg {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .forgotInput {
+    font-size: 16px; /* Prevents zoom on iOS */
+    height: 50px;
+  }
+  
+  .forgotTitle {
+    font-size: 1.6rem;
+  }
+  
+  .forgotSubtitle {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+
