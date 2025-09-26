@@ -1,9 +1,16 @@
 "use client";
-import React, { useState, ChangeEvent, MouseEvent } from 'react';
+import React, { useState, ChangeEvent, MouseEvent, useEffect, Suspense } from 'react';
 import styles from '@/app/css/register.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { AlertTriangle } from 'lucide-react';
+import { ToastContainer, toast } from 'react-toastify';
+import { log } from 'console';
+import { useUser } from '../context/UserContext';
 
+
+
+ 
 interface FormData {
   fullName: string;
   email: string;
@@ -30,6 +37,7 @@ const RegisterForm: React.FC = () => {
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
+  const [error,setError] = useState("");
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value, type, checked } = e.target;
@@ -64,12 +72,78 @@ const RegisterForm: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  const [emails, setEmails] = useState<string[]>([]);
+
+useEffect(() => {
+  const getEmails = async () => {
+    try { 
+      const res = await fetch("/api/auth/signup", {
+        method: "GET",
+        cache: "no-store"
+      });
+      
+      const data = await res.json();
+  
+        const userEmails = data.users
+        .filter((user: any) => user && user.Email) 
+        .map((user: any) => user.Email.toLowerCase()); 
+      
+      setEmails(userEmails);
+      
+    } catch (error: any) {
+      setError("Failed to fetch emails"+ error.messsage);
+    }
+  };
+  
+  getEmails();
+}, []);
+
+
   const router = useRouter();
-  const handleSubmit = (e: MouseEvent<HTMLButtonElement>): void => {
+  const {setUser}= useUser();
+
+
+  const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (validateForm()) {
-      alert('Registration successful!');
-       router.push("/userProfile")
+       if(!emails.includes(formData.email.trim().toLowerCase())){
+
+        try{
+        const res = await fetch("http://localhost:3000/api/auth/signup",{
+          cache:"no-store",
+          method: "POST",
+          headers:
+          {
+            "Content-Type":"application/json",
+          },
+          body: JSON.stringify({ fullName: formData.fullName, email: formData.email, password: formData.password})
+      })
+
+      const data = await res.json();
+
+
+      if (!data.success) {
+        setError("Error: " + (data.error || "Unknown error"));
+        return;
+      }
+
+      setUser({
+        ...data.user,
+      });
+      
+        router.push("/userProfile")
+
+     
+      }catch(error: any){
+        setError("Network Error"+ error.messsage)
+      }
+
+       }else{
+      
+     toast.error("❌ This email address already exists!");
+     
+       }
+      
     }
   };
 
@@ -85,12 +159,14 @@ const RegisterForm: React.FC = () => {
   };
 
   return (
+    
     <div className={styles.registerContainer}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-8 col-lg-6 col-xl-5">
             <div className={styles.registerCard}>
               <div className="card-body ">
+      
                 {/* Header */}
                 <div className="text-center mb-4">
                   <div className="mb-3">
@@ -203,6 +279,27 @@ const RegisterForm: React.FC = () => {
                     Already have an account? <Link href="/signIn" className={styles.registerSigninLink}>Sign In</Link>
                   </p>
                 </div>
+
+
+                          <ToastContainer
+position="top-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+style={{
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    textAlign: "center",
+    width: "fit-content"
+  }}
+/>
               </div>
             </div>
           </div>

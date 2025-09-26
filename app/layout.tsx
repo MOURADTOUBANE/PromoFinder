@@ -1,9 +1,10 @@
 import Navbar from '@/component/nav';
 import Script from 'next/script';
+import {UserProvider} from "./context/UserContext"
 
 export const metadata = {
-  title: 'Promo Site',
-  description: 'Find best deals from Amazon, Temu, etc.',
+  title: 'DealHunter',
+  description: 'best deals in one pleace.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
       </head>
       <body>
+         <UserProvider>
         <header>
             <Navbar/>
         </header>
@@ -50,6 +52,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           integrity="sha384-MrcW6ZMFYk8+zMdS8nwwj3LrZ4U5Fh2yFZnt0W3aZlI5UOzP+I1lwLZEOslYg+eZ"
           crossOrigin="anonymous"
         />
+
+      </UserProvider>
       </body>
     </html>
   );

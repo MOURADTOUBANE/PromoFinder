@@ -6,12 +6,41 @@ import { faEnvelope} from '@fortawesome/free-regular-svg-icons';
 import { faComment } from "@fortawesome/free-solid-svg-icons";
 import { faHeadset } from "@fortawesome/free-solid-svg-icons/faHeadset";
 import { useEffect, useRef, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 export default function Support (){
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
   const [enableScroll, setEnableScroll] = useState(true);
+
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+
+  const formData = {
+    name: (form[0] as HTMLInputElement).value,
+    email: (form[1] as HTMLInputElement).value,
+    subject: (form[2] as HTMLInputElement).value,
+    message: (form[3] as HTMLTextAreaElement).value,
+  };
+
+  const res = await fetch("http://localhost:3000/api/sendMail", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
+
+  if (res.ok) {
+    toast.success("Message sent!");
+    form.reset();
+  } else {
+    toast.error(" Failed to send. Try again.");
+  }
+};
+
 
  
   useEffect(() => {
@@ -28,7 +57,7 @@ export default function Support (){
     return () => window.removeEventListener("resize", checkSize);
   }, []);
 
-  // auto-scroll
+ 
   useEffect(() => {
     if (!enableScroll) return;
 
@@ -68,7 +97,7 @@ export default function Support (){
             <FontAwesomeIcon icon={faEnvelope} />
             </div>
                 <h1>Email Us</h1>
-                <p>support@dealhunter.com</p>
+                <p>dealhunters.team1@gmail.com</p>
                 <p>Send us an email anytime</p>
             </div>
 
@@ -91,22 +120,22 @@ export default function Support (){
             </div>
         </div>
 
-        <form action="#" className={Styles.form}>
+        <form onSubmit={handleSubmit} className={Styles.form}>
   <h1>Send us a Message</h1>
 
   <label>Name *</label>
-  <input type="text" placeholder="Your full name" className={Styles.name} />
+  <input type="text" placeholder="Your full name" className={Styles.name} required/>
 
   <label>Email *</label>
-  <input type="email" placeholder="your@email.com" />
+  <input type="email" placeholder="your@email.com"  required/>
 
   <label>Subject *</label>
-  <input type="text" placeholder="What is this about?" />
+  <input type="text" placeholder="What is this about?"  required />
 
   <label>Message *</label>
-  <textarea placeholder="Tell us more about your inquiry..." />
+  <textarea placeholder="Tell us more about your probleme..."   required/>
 
-  <button>
+  <button type="submit">
     <span>✈</span> Send Message
   </button>
 </form>
@@ -159,6 +188,25 @@ export default function Support (){
         </div>
       </div>
     </div>
+                   <ToastContainer
+    position="top-center"
+    autoClose={5000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick={false}
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+    theme="light"
+    style={{
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        textAlign: "center",
+        width: "fit-content"
+      }}
+    />
         </>
     );
 }

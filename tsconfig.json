@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/api/auth/forgotPassword/route.js", "app/api/search/aliExpress/route.js", "app/deals/page.jsx", "app/favorite/page.jsx"],
   "exclude": ["node_modules"]
 }

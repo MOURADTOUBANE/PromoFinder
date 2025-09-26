@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearchengin } from '@fortawesome/free-brands-svg-icons';
 import { faHouse, faMagnifyingGlass, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faHeart, faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useUser } from '@/app/context/UserContext';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,6 +22,9 @@ export default function Navbar() {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+
+  const { user } = useUser();
+  const router = useRouter();
 
   return (
     <nav className={`navbar fixed-top shadow-sm py-3 px-4  ${Styles.navbar}`}>
@@ -65,14 +69,32 @@ export default function Navbar() {
   </ul>
   {/* Mobile Sign In (inside dropdown menu) */}
   <div className={Styles.mobileSignIn}>
-    <Link href="/login">Sign In</Link>
-  </div>
+  {user ? (
+    <Link href="/userProfile" className={Styles.login}>
+      Account
+    </Link>
+  ) : (
+    <Link href="/login" className={Styles.login}>
+      Sign In
+    </Link>
+  )}
+</div>
+
 </div>
 
 {/* Desktop Sign In */}
-<div className={Styles.loginContainer}>
-  <Link href="/login" className={Styles.login}>Sign In</Link>
-</div>
+ <div className={Styles.loginContainer}>
+        {user ? (
+          <img
+            src={user.profilePicture}
+            alt="Profile"
+            className={Styles.profileImage}
+              onClick={() => router.push("/userProfile")}
+          />
+        ) : (
+          <Link href="/login" className={Styles.login}>Sign In</Link>
+        )}
+      </div>
     </nav>
   );
 }
