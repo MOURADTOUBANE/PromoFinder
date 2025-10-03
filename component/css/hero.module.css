@@ -9,6 +9,10 @@
     
 }
 
+.overlay {
+  display: none;
+}
+
 .image{
     width: 100%;
     max-width:37rem ;
@@ -42,7 +46,7 @@
 
 .infos h1{
     margin-top: 15px;
- color: black;
+ color: rgb(14, 0, 20);
  font-size: 25px;
  font-weight: 650;
  text-align: center;
@@ -55,7 +59,7 @@
 
 .icon{
     margin-left: 23px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
+      background: linear-gradient(135deg, #b366ea, #764ba2);
   width: 45px;
   height: 45px;
   display: inline-flex;
@@ -66,9 +70,53 @@
   font-size: 30px;
 }
 
-@media (max-width: 768px){
-    .hero{
-        padding: 90px 0px;
-    }
+@media (max-width: 768px) {
+  .hero {
+    padding: 0;
+    background: url("/images/deals-hero.jpg") no-repeat center/cover;
+    height: 100vh;
+  }
+
+ 
+  .row {
+    display: none !important;
+  }
+
+  
+  .overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 35px;
+    margin-bottom: 20px;
+    color: rgb(242, 213, 255);
+  }
+
+  .overlay a {
+    font-size: 17px;
+  }
+
+  .infos{
+    background-color: white;
+    margin-top: 35px;
+    margin-bottom: 25px;
+    
+}
+
+.infos h1{
+ font-weight: 550; 
+}
+
+
+
 
 }

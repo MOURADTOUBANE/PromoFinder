@@ -51,7 +51,9 @@ export default function Features(){
     <div className={Styles.footer}>
         <h1>Ready to Start Saving?</h1>
         <p className="mt-2">Join thousands of savvy shoppers who trust DealHunter to find the best deals online.</p>
-        <button>Browse All Deals<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: "8px" }} />  </button>
+        <button>Browse All Deals<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: "8px" }} /> 
+      
+         </button>
     </div>
 
         </>

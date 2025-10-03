@@ -7,7 +7,7 @@ import Styles from "../css/deals.module.css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import {useUser} from '../context/UserContext';
 import { useRouter } from 'next/navigation';
-import FavProduct from '@/component/favProducts';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Deals() {
     const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
@@ -93,15 +93,25 @@ export default function Deals() {
 
    
 
-    const checkIsUserInable = (product) => {
+    const checkIsUserInable = async (product) => {
   if (!user) {
     router.push('/signIn');
     return;
   }
 
-  localStorage.setItem('favoriteProduct', JSON.stringify(product));
+    const res= await fetch('/api/favorites', {
+    method: 'POST',
+    cache:'no-store',
+    headers: { 'Content-Type': 'application/json'},
+    body: JSON.stringify({ userId: user.id, product }),
+  });
 
-  router.push('/favorite');
+    const data = await res.json();
+  if (data.success) {
+    toast.success("Product added to favorites!"); 
+    
+  }
+
 };
 
         return (
@@ -236,7 +246,6 @@ export default function Deals() {
                 <h1 className={Styles.title}>Find Amazing Deals</h1>
                 <div className="container mt-4">
                     <form onSubmit={handleSearch} className={Styles.searchBar}>
-                        <FontAwesomeIcon icon={faMagnifyingGlass} className={Styles.searchIcon} />
                         <input
                             type="text"
                             value={searchTerm}
@@ -291,6 +300,26 @@ export default function Deals() {
                     </div>
                 </div>
             </div>
+
+                                       <ToastContainer
+                            position="top-center"
+                            autoClose={5000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick={false}
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                            theme="light"
+                            style={{
+                                top: "50%",
+                                left: "50%",
+                                transform: "translate(-50%, -50%)",
+                                textAlign: "center",
+                                width: "fit-content"
+                              }}
+                            />
         </>
     );
 }

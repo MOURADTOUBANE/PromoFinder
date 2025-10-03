@@ -33,7 +33,7 @@
 
 .searchButton {
     margin-left: 10px;
-    background: #3498db;
+    background: #7f34db;
     color: white;
     border: none;
     padding: 0 20px;
@@ -43,7 +43,7 @@
 
 .mobileFilterButton {
     display: none;
-    background: #6f42c1;
+    background:#7f34db;
     color: white;
     border: none;
     border-radius: 8px;
@@ -300,9 +300,6 @@
   padding: 20px;
 }
 
-
-
-
 .productsContainer {
     padding: 20px;
     min-height: 500px;
@@ -433,7 +430,7 @@
 .buyButton {
     display: block;
     width: 100%;
-    background: #3498db;
+    background: #eea300;
     color: white;
     text-align: center;
     padding: 10px;
@@ -448,19 +445,29 @@
 }
 
 .favButton {
-  margin: 5 65;
-  background-color: red;
-  padding: 5px 10px; 
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  background-color: #ff4757;       /* لون أحمر جذاب */
   color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  width: 100%;
 }
 
 .favButton:hover {
-  background-color: darkred;
+  background-color: #ff6b81;
+  transform: scale(1.05);
+}
+
+.favButton:active {
+  transform: scale(0.95);
 }
 
 
@@ -484,16 +491,22 @@
     margin-right: 15px;
     max-width: none;
   }
+
+   .productsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px; 
+    padding: 10px ;
+  }
+
+  .productCard {
+    width: 100%; 
+    height: auto;
+  }
+ .favButton {
+    width: 100%;                  /* full width on mobile */
+    font-size: 13px;
+    padding: 10px 0;
+  }
 }
 
-@media (max-width: 480px) {
-  .title {
-    font-size: 1.5rem;
-    margin-top: 30px;
-  }
-  
-  .mobileFilterPanel {
-    width: 280px;
-    left: -280px;
-  }
-}

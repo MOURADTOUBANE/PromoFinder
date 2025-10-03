@@ -1,19 +1,9 @@
-.icon {
-  background-color: blueviolet;
-  width: 30px;
-  height: 30px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 11px;      
-  color: white;            
-  font-size: 31px;
-}
-
 .logo {
   background: linear-gradient(135deg, hsl(262 83% 58%), hsl(280 100% 70%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-weight: 770;
+ 
 }
 
 

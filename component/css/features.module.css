@@ -3,10 +3,20 @@
        padding: 60px 0px;
 }
 
-.main h1{
+.main h1 {
     font-size: 30px;
     font-weight: 700;
     text-align: center;
+    margin-bottom: 40px;
+    color: #764ba2; /* لون زوين متناسق مع gradient ديال brand */
+    font-family: 'Poetsen One', sans-serif; /* font مميز */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* shadow خفيف باش يبان */
+}
+
+.main h1 {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .info p{
@@ -43,14 +53,19 @@
  text-align: center;
 }
 
-.card{
-  background-color:  white;
-  border-radius: 10px;   
-  padding: 15px;   
+.card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer;
 }
 
-.card:hover{
-    box-shadow: 0px 0px 15px rgb(202, 146, 255);
+.card:hover {
+  transform: translateY(-5px) scale(1.03); 
+  box-shadow: 0px 10px 20px rgba(202, 146, 255, 0.5);
+  background: linear-gradient(135deg, #f3e7ff, #e0c3fc);
 }
 
 .footer{
@@ -86,16 +101,46 @@
 }
 
 @media (max-width: 768px){
-
-
   .cards {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px;
+    -webkit-overflow-scrolling: touch;
   }
+
   .card {
-    max-width: 95vw;
-    min-width: 0;
-    margin: 0.5rem 0;
+    flex: 0 0 auto;
+    width: 150px;
+    margin: 0;
   }
+
+
+.cards h5{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;  
+}
+
+.cards p{
+ font-size: 10px;
+ text-align: center;
+}
+
+  .main h1 {
+    font-size: 24px; 
+    margin-bottom: 15px;
+  }
+
+  .info p{
+    max-width: 400;
+    font-size: 14px;
+}
+
+.footer{
+  padding: 30;
+  font-size: 12px;
+  
+}
 }

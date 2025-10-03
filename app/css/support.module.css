@@ -277,7 +277,7 @@
 .answerCard::before {
     content: '';
     position: absolute;
-    top: 0;
+    top:0;
     left: -100%;
     width: 100%;
     height: 100%;
@@ -364,7 +364,6 @@
     }
 }
 
-
 .cards::-webkit-scrollbar {
     height: 8px;
 }
@@ -385,92 +384,88 @@
 
 
 @media (max-width: 768px) {
+
   .hero{
-        padding: 50px;
-        color: white;
+    margin-top: 70px;
+        padding: 40px;
 }
 
- .mainTitle{
-    font-weight: 700;    
-    font-size: 40;
+  .mainTitle{
+    font-weight: 500;    
+    font-size: 30;
+    margin-top: 0px ;
 }
 
 .info{
     color: lavender;
-    font-size: 11;
-    font-weight: 500;
+    font-size: 10;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-  .contact {
-    flex-direction: column;
-    gap: 2rem;
+   .contact {
+    display: flex;
+    flex-direction: row;   
+    gap: 15px;             
+    overflow-x: auto;    
+    scroll-snap-type: x mandatory;
+    padding: 15px 10px;
   }
-  
+
   .card {
-    max-width: 100%;
-    margin: 0 1rem;
-  }
-  
-  .icon {
-    width: 70px;
-    height: 70px;
-  }
-  
-  .icon svg {
-    font-size: 1.6rem;
-  }
-  
-  .card h1 {
-    font-size: 1.3rem;
+    flex: 0 0 auto;        
+    min-width: 220px;      
+    max-width: 250px;
+    scroll-snap-align: start;  
+
   }
 
-    .form {
-    padding: 20px;
-    margin: 20px;
-  }
-
-  .form h1 {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-
-  .form input[type="text"],
-  .form input[type="email"],
-  .form textarea {
-    font-size: 13px;
-    padding: 10px 12px;
-  }
-
-  .form button {
-    font-size: 14px;
-    padding: 12px;
-  }
-
-    .cards {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .answerCard {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-
-
-
-@media (max-width: 480px) {
-  .card {
-    padding: 2rem 1rem;
-  }
-  
   .icon {
     width: 60px;
     height: 60px;
   }
-  
-  .icon svg {
-    font-size: 1.4rem;
+
+  .card h1 {
+    font-size: 1.1rem;
   }
+
+  .title{
+    margin-bottom: 10px;
+  }
+ 
+.title h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.title p {
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+  .answerCard {
+    min-width: 220px;   
+    max-width: 250px;
+    flex-shrink: 0;
+    padding: 15px;
+  }
+
+  .answerCard h1 {
+    font-size: 1.2rem;
+    text-align: center ;
+  }
+
+  .answerCard p {
+    font-size: 0.9rem;
+    text-align: center ;
+  }
+
+  .questionsSection { 
+    margin: 0 auto;
+    padding: 40px 0px;
+    min-height: 20vh;
+}
+
+
 }

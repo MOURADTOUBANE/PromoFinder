@@ -7,41 +7,50 @@ import { faBagShopping, faUsers, faMoneyBillTrendUp } from "@fortawesome/free-so
 export default function Hero(){
     return(
         <>         
-        <div className={`row px-3  ${Styles.hero}`}>
-            <div className="col-md-6">
-                <div >
-                <h1 className={Styles.title}>
-                    Find the Best
-                     <br></br>
-               <span className={NavStyles.logo}>Deals & Discounts</span> 
-                </h1>
-                </div>
-                <p className={`text-black-50 ${Styles.extract}`}>Discover amazing deals from top e-commerce sites.
-                     Save up to 70% on electronics, fashion, home goods, 
-                     and more.
-                     </p>
+      <div className={Styles.hero}>
+  <div className={Styles.overlay}>
+    <h1 className={Styles.title}>
+      Find the Best <br />
+      <span className={NavStyles.logo}>Deals & Discounts</span>
+    </h1>
 
-                <div className="d-flex mt-4 mb-5 ">
-                    <Link
-                       href="/deals"
-                        className={NavStyles.login}>
-                       Explore Deals
-                    </Link>
-                    <p className="ms-3 mt-2 text-black-50 fw-bold">⭐1000+ verified deals</p>
-                </div>
+    <Link href="/deals" className={NavStyles.login}>
+      Explore Deals
+    </Link>
+  </div>
 
+  {/* desktop */}
+  <div className="row px-3 d-none d-md-flex">
+    <div className="col-md-6">
+      <h1 className={Styles.title}>
+        Find the Best <br />
+        <span className={NavStyles.logo}>Deals & Discounts</span>
+      </h1>
+      <p className={`text-black-50 ${Styles.extract}`}>
+        Discover amazing deals from top e-commerce sites. Save up to 70% on
+        electronics, fashion, home goods, and more.
+      </p>
+      <div className="d-flex mt-4 mb-5">
+        <Link href="/deals" className={NavStyles.login}>
+          Explore Deals
+        </Link>
+        <p className="ms-3 mt-2 text-black-50 fw-bold">
+          ⭐1000+ verified deals
+        </p>
+      </div>
+    </div>
 
-            </div>
-        <div className="col-md-6 mb-5 ">
-            <Link href="#" >
-            <img 
-             className={`${Styles.image} img-fluid `}
-            src="/images/deals-hero.jpg"
-            alt="Deals Hero"
-            />
-            </Link>
-            </div>
-        </div>
+    <div className="col-md-6 mb-5">
+      <Link href="#">
+        <img
+          className={`${Styles.image} img-fluid`}
+          src="/images/deals-hero.jpg"
+          alt="Deals Hero"
+        />
+      </Link>
+    </div>
+  </div>
+</div>
 
        
         <div className={`d-flex justify-content-around  ${Styles.infos}`}>

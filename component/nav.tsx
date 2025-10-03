@@ -26,14 +26,12 @@ export default function Navbar() {
   const { user } = useUser();
   const router = useRouter();
 
+  
   return (
     <nav className={`navbar fixed-top shadow-sm py-3 px-4  ${Styles.navbar}`}>
       {/*logo*/}
       <div className={Styles.brand}>
-        <div className={Styles.icon}>
-          <FontAwesomeIcon icon={faSearchengin} className="ms-2 mt-2"/>
-        </div>
-        <Link href="/" className={`navbar-brand fw-bold fs-5 mb-0 ms-1 ${Styles.logo}`}>
+        <Link href="/" className={`navbar-brand  mb-0 ms-1 ${Styles.logo}`}>
           DealHunter
         </Link>
       </div>
@@ -59,9 +57,21 @@ export default function Navbar() {
       <Link href="/deals" className={Styles.page} onClick={closeMenu}>Deals</Link>
     </li>
     <li className={isActive("/favorite") ? Styles.active : ""}>
-      <FontAwesomeIcon icon={faHeart} />
-      <Link href="" className={Styles.page} onClick={closeMenu}>Favorite</Link>
-    </li>
+  <FontAwesomeIcon icon={faHeart} />
+  <Link
+    href="/favorite"
+    className={Styles.page}
+    onClick={(e) => {
+      closeMenu();
+      if (!user) {
+        e.preventDefault();
+        router.push("/signIn"); 
+      }
+    }}
+  >
+    Favorite
+  </Link>
+</li>
     <li className={isActive("/support") ? Styles.active : ""}>
       <FontAwesomeIcon icon={faEnvelope} />
       <Link href="/support" className={Styles.page} onClick={closeMenu}>Support</Link>
@@ -96,5 +106,6 @@ export default function Navbar() {
         )}
       </div>
     </nav>
+    
   );
 }

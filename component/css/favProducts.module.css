@@ -1,119 +1,185 @@
+
 .productCardHorizontal {
-    margin-top: 50px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: white;
-  margin-bottom: 10px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    margin-bottom: 10px;
+    transition: box-shadow 0.3s ease;
 }
 
+.productCardHorizontal:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 
 .productImageLeft {
-  position: relative;
-  width: 80px;
-  height: 80px;
-  flex-shrink: 0;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
 }
 
 .productImageLeft img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 .discountBadge {
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  background: #ff4444;
-  color: white;
-  padding: 2px 6px;
-  border-radius: 10px;
-  font-size: 10px;
-  font-weight: bold;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    background: #ff4444;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: bold;
 }
 
-
 .productInfo {
-  flex: 1;
+    flex: 1;
 }
 
 .productTitle {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0 0 8px 0;
-  color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    color: #333;
 }
 
 .priceSection {
-  display: flex;
-  gap: 10px;
-  margin: 5px 0;
+    display: flex;
+    gap: 8px;
+    margin: 4px 0;
 }
 
 .currentPrice {
-  font-size: 18px;
-  font-weight: bold;
-  color: #2c5aa0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c5aa0;
 }
 
 .originalPrice {
-  font-size: 14px;
-  color: #999;
-  text-decoration: line-through;
+    font-size: 12px;
+    color: #999;
+    text-decoration: line-through;
 }
 
 .productMeta {
-  margin: 5px 0;
+    margin: 4px 0;
 }
 
 .rating {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 14px;
-  color: #666;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: #666;
 }
 
+/* Buy Button */
 .buyButton {
-  background: #2c5aa0;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 14px;
-  margin-top: 8px;
-  display: inline-block;
+    background: #2c5aa0;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 12px;
+    margin-top: 6px;
+    display: inline-block;
 }
 
 .buyButton:hover {
-  background: #1e3d6f;
+    background: #1e3d6f;
 }
 
-
+/* Trash Button */
 .trashContainer {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
 }
 
 .trashButton {
-  background: #ff0000;
-  border: 1px solid #ddd;
-  color: white;
-  padding: 8px 16px;
-  cursor: pointer;
-  font-size: 14px;
-  border-radius: 4px;
-  font-weight: bold;
+    background: #ff0000;
+    border: 1px solid #ddd;
+    color: white;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 4px;
+    font-weight: bold;
 }
 
 .trashButton:hover {
-  color: #ff4444;
-  background-color: #fff;
-  border-color: #ff4444;
+    color: #ff4444;
+    background-color: #fff;
+    border-color: #ff4444;
+}
+
+/* Favorite Button */
+.favButtonHorizontal {
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.favButtonHorizontal:hover {
+    background-color: #ff6b81;
+    transform: scale(1.05);
+}
+
+.favButtonHorizontal:active {
+    transform: scale(0.95);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .productCardHorizontal {
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .productImageLeft {
+        width: 60px;
+        height: 110px;
+    }
+
+    .productTitle {
+   
+        font-size: 10px;
+    }
+
+    .currentPrice {
+        font-size: 14px;
+    }
+
+    .originalPrice {
+        font-size: 10px;
+    }
+
+    .rating {
+        font-size: 10px;
+    }
+
+    .buyButton, .trashButton, .favButtonHorizontal {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
 }

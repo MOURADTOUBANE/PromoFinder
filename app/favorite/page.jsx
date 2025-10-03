@@ -1,49 +1,77 @@
 'use client';
 import FavProduct from '@/component/favProducts';
 import { useState, useEffect } from 'react';
+import { useUser } from '../context/UserContext';
+import Style from '../css/favorites.module.css'
+import { ToastContainer, toast } from 'react-toastify';
+
 
 export default function Products() {
+  const {user} = useUser();
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    const saved = localStorage.getItem('favoriteProduct');
-    if (saved) {
-      
-      const parsed = JSON.parse(saved);
-      const favs = Array.isArray(parsed) ? parsed : [parsed];
-      setProducts(favs);
-    }
-  }, []);
+  const fetchFavorites = async () => {
+    const res = await fetch(`/api/favorites?userId=${user.id}`);
+    const data = await res.json();
+    console.log(data)
+    setProducts(data);
+  };
 
-  const handleRemove = (id) => {
-    const updated = products.filter((p) => p.id !== id);
-    setProducts(updated);
-    localStorage.setItem('favoriteProduct', JSON.stringify(updated));
+  useEffect(() => {
+  if (!user) return; 
+  fetchFavorites();
+}, [user]);
+
+  const removeFavorite = async (productId) => {
+    await fetch(`/api/favorites/${productId}?userId=${user.id}`, {
+      method: "POST",
+    });
+    fetchFavorites();
+    toast.info("product deleted!")
   };
 
   return (
-    <div>
-      <h2>Favorites</h2>
-      {products.length > 0 ? (
-        products.map((product) => (
-          <FavProduct
-            key={product.id ||  product.productId}
-            productId={product.id}
-            productTitle={product.title}
-            productImage={product.image || product.imageUrl}
-            productPrice={product.price}
-            productCurrency={product.currency || 'USD'}
-            productDiscount={product.discount}
-            productOriginalPrice={product.originalPrice}
-            productRating={product.rating}
-            productOrders={product.orders}
-            productUrl={product.productUrl || product.url}
-            onRemove={handleRemove} 
-          />
-        ))
-      ) : (
-        <p>No favorites yet.</p>
-      )}
+    <div className={Style.main}>
+     {products.length > 0 ? (
+  products.map((product) => (
+    <FavProduct
+      key={product.productId} 
+      productId={product.productId}
+      productTitle={product.productTitle}
+      productImage={product.productImage || "/images/placeholder.jpg"}
+      productPrice={product.productPrice}
+      productCurrency={product.productCurrency || "USD"}
+      productDiscount={product.productDiscount || "0%"}
+      productOriginalPrice={product.productOriginalPrice}
+      productRating={product.productRating || 0}
+      productOrders={product.productOrders || 0}
+      productUrl={product.productUrl || "#"}
+      onRemove={removeFavorite}
+    />
+  ))
+) : (
+  <p>No favorites yet.</p>
+)}
+
+     <ToastContainer
+                            position="top-center"
+                            autoClose={5000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick={false}
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                            theme="light"
+                            style={{
+                                top: "50%",
+                                left: "50%",
+                                transform: "translate(-50%, -50%)",
+                                textAlign: "center",
+                                width: "fit-content"
+                              }}
+                            />
     </div>
   );
 }
