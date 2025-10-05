@@ -79,8 +79,9 @@ const SignInForm: React.FC = () => {
 });
       router.push("/userProfile");
       
-    }catch(error: any){
-      setErrors(error.messsage)
+    }catch(error: unknown){
+      if (error instanceof Error) setErrors({ password: error.message });
+      else setErrors({ password: "Unknown error" });
     }
     
       
@@ -182,7 +183,7 @@ const SignInForm: React.FC = () => {
                 {/* Footer */}
                 <div className="text-center">
                   <p className={styles.signinFooterText}>
-                    Don't have an account? <Link href="/login" className={styles.signinSignupLink}>Sign Up</Link>
+                    Don t have an account? <Link href="/login" className={styles.signinSignupLink}>Sign Up</Link>
                   </p>
                 </div>
                                           <ToastContainer

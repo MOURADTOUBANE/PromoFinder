@@ -1,16 +1,11 @@
-"use client";
-import React, { useState, ChangeEvent, MouseEvent, useEffect, Suspense } from 'react';
+'use client';
+import React, { useState, ChangeEvent, MouseEvent, useEffect } from 'react';
 import styles from '@/app/css/register.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { AlertTriangle } from 'lucide-react';
 import { ToastContainer, toast } from 'react-toastify';
-import { log } from 'console';
 import { useUser } from '../context/UserContext';
 
-
-
- 
 interface FormData {
   fullName: string;
   email: string;
@@ -37,7 +32,7 @@ const RegisterForm: React.FC = () => {
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
-  const [error,setError] = useState("");
+  const [error, setError] = useState("");
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value, type, checked } = e.target;
@@ -74,34 +69,33 @@ const RegisterForm: React.FC = () => {
 
   const [emails, setEmails] = useState<string[]>([]);
 
-useEffect(() => {
-  const getEmails = async () => {
-    try { 
-      const res = await fetch("/api/auth/signup", {
-        method: "GET",
-        cache: "no-store"
-      });
-      
-      const data = await res.json();
-  
-        const userEmails = data.users
-        .filter((user: any) => user && user.Email) 
-        .map((user: any) => user.Email.toLowerCase()); 
-      
-      setEmails(userEmails);
-      
-    } catch (error: any) {
-      setError("Failed to fetch emails"+ error.messsage);
-    }
-  };
-  
-  getEmails();
-}, []);
+  useEffect(() => {
+    const getEmails = async () => {
+      try { 
+        const res = await fetch("/api/auth/signup", {
+          method: "GET",
+          cache: "no-store"
+        });
+        
+        const data = await res.json();
 
+        const userEmails = (data.users ?? [])
+          .filter((user: unknown) => user && typeof user === 'object' && 'Email' in (user as any))
+          .map((user: unknown) => ((user as any).Email as string).toLowerCase());
+        
+        setEmails(userEmails);
+        
+      } catch (error: unknown) {
+        if (error instanceof Error) setError("Failed to fetch emails: " + error.message);
+        else setError("Failed to fetch emails");
+      }
+    };
+    
+    getEmails();
+  }, []);
 
   const router = useRouter();
-  const {setUser}= useUser();
-
+  const { setUser } = useUser();
 
   const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -109,39 +103,30 @@ useEffect(() => {
        if(!emails.includes(formData.email.trim().toLowerCase())){
 
         try{
-        const res = await fetch("http://localhost:3000/api/auth/signup",{
-          cache:"no-store",
-          method: "POST",
-          headers:
-          {
-            "Content-Type":"application/json",
-          },
-          body: JSON.stringify({ fullName: formData.fullName, email: formData.email, password: formData.password})
-      })
+          const res = await fetch("/api/auth/signup",{
+            cache:"no-store",
+            method: "POST",
+            headers: { "Content-Type":"application/json" },
+            body: JSON.stringify({ fullName: formData.fullName, email: formData.email, password: formData.password })
+          });
 
-      const data = await res.json();
+          const data = await res.json();
 
+          if (!data.success) {
+            setError("Error: " + (data.error || "Unknown error"));
+            return;
+          }
 
-      if (!data.success) {
-        setError("Error: " + (data.error || "Unknown error"));
-        return;
-      }
-
-      setUser({
-        ...data.user,
-      });
-      
-        router.push("/userProfile")
-
+          setUser({ ...data.user });
+          router.push("/userProfile");
      
-      }catch(error: any){
-        setError("Network Error"+ error.messsage)
-      }
+        } catch (error: unknown) {
+          if (error instanceof Error) setError("Network Error: " + error.message);
+          else setError("Network Error");
+        }
 
-       }else{
-      
-     toast.error("❌ This email address already exists!");
-     
+       } else {
+         toast.error(" This email address already exists!");
        }
       
     }
@@ -157,7 +142,6 @@ useEffect(() => {
       target.style.boxShadow = '0 4px 15px rgba(139, 92, 246, 0.3)';
     }
   };
-
   return (
     
     <div className={styles.registerContainer}>
