@@ -1,12 +1,11 @@
 'use client'
-import React, { useState, ChangeEvent, MouseEvent, useEffect } from 'react';
+import React, { useState, MouseEvent, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import styles from '@/app/css/forgotPass.module.css';
 import { ToastContainer, toast } from 'react-toastify';
 
-
-
-const ResetPassword: React.FC = () => {
+// Separate the component that uses useSearchParams
+const ResetPasswordForm: React.FC = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get('token') || '';
@@ -122,18 +121,18 @@ const ResetPassword: React.FC = () => {
         </div>
       </div>
       
-                                <ToastContainer
-      position="top-center"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick={false}
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="light"
-      style={{
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        style={{
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
@@ -142,6 +141,15 @@ const ResetPassword: React.FC = () => {
         }}
       />
     </div>
+  );
+};
+
+// Wrap with Suspense
+const ResetPassword: React.FC = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ResetPasswordForm />
+    </Suspense>
   );
 };
 
