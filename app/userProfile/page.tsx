@@ -5,6 +5,9 @@ import styles from '@/app/css/userProfile.module.css';
 import {useUser} from '../context/UserContext';
 import { ToastContainer, toast } from 'react-toastify';
 import bcrypt from 'bcryptjs';
+import { redirect } from 'next/dist/server/api-utils';
+import { notFound } from 'next/navigation';
+
 
 export default function UserProfile() {
   const [activeTab, setActiveTab] = useState('profile');
@@ -156,6 +159,10 @@ export default function UserProfile() {
     
   };
 
+   if (!user) {
+    return notFound(); 
+  }
+      
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>

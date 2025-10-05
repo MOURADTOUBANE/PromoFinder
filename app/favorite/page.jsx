@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useUser } from '../context/UserContext';
 import Style from '../css/favorites.module.css'
 import { ToastContainer, toast } from 'react-toastify';
+import { notFound } from 'next/navigation';
 
 
 export default function Products() {
@@ -29,6 +30,10 @@ export default function Products() {
     fetchFavorites();
     toast.info("product deleted!")
   };
+
+   if (!user) {
+      return notFound(); 
+    }
 
   return (
     <div className={Style.main}>

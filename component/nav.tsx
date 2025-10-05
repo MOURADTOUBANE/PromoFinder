@@ -80,7 +80,16 @@ export default function Navbar() {
   {/* Mobile Sign In (inside dropdown menu) */}
   <div className={Styles.mobileSignIn}>
   {user ? (
-    <Link href="/userProfile" className={Styles.login}>
+    <Link href="/userProfile" 
+    className={Styles.login}
+    onClick={(e) => {
+      closeMenu();
+      if (!user) {
+        e.preventDefault();
+        router.push("/signIn"); 
+      }
+    }}
+    >
       Account
     </Link>
   ) : (
