@@ -1,13 +1,12 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { Camera, Edit, Eye, EyeOff, Save, X, Monitor, Smartphone, MapPin, Calendar } from 'lucide-react';
+import { Edit, Eye, EyeOff, Save, X } from 'lucide-react';
 import styles from '@/app/css/userProfile.module.css';
-import {useUser} from '../context/UserContext';
+import { useUser } from '../context/UserContext';
 import { ToastContainer, toast } from 'react-toastify';
 import bcrypt from 'bcryptjs';
-import { redirect } from 'next/dist/server/api-utils';
-import { notFound } from 'next/navigation';
 
+import { notFound } from 'next/navigation';
 
 export default function UserProfile() {
   const [activeTab, setActiveTab] = useState('profile');
@@ -15,36 +14,32 @@ export default function UserProfile() {
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const {user,setUser} = useUser(); 
- const [errors, setErrors] = useState("");
- 
-  
+  const { user, setUser } = useUser();
+  const [errors, setErrors] = useState("");
+
   const [userData, setUserData] = useState({
     fullName: user?.name || "",
     email: user?.email || "",
     profilePicture: 'images/user-picture.jpg',
   });
 
-  // Edit form state
   const [editForm, setEditForm] = useState({
     fullName: userData.fullName,
     email: userData.email,
   });
 
-  // Password change form
   const [passwordForm, setPasswordForm] = useState({
     currentPassword: '',
     newPassword: '',
     confirmPassword: ''
   });
 
-
   useEffect(() => {
     if (user) {
       setUserData({
         fullName: user.name,
         email: user.email,
-        profilePicture:'images/user-picture.jpg'
+        profilePicture: 'images/user-picture.jpg'
       });
       setEditForm({
         fullName: user.name,
@@ -52,66 +47,59 @@ export default function UserProfile() {
       });
     }
   }, [user]);
-  
- 
- const handleEditToggle = () => {
+
+  const handleEditToggle = () => {
     if (isEditing) {
       setEditForm({
         fullName: userData.fullName,
         email: userData.email,
-     
       });
     }
     setIsEditing(!isEditing);
   };
 
-
-
-
-  
   const handleSaveProfile = async () => {
-  setUserData({
-    ...userData,
-    ...editForm,
-  });
-
-  try {
-    const res = await fetch("http://localhost:3000/api/user/edit", {
-      cache: "no-store",
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        action: "edit",
-        userId: user.id,
-        ...editForm,
-      }),
+    setUserData({
+      ...userData,
+      ...editForm,
     });
 
-    const data = await res.json();
+    try {
+      const res = await fetch("http://localhost:3000/api/user/edit", {
+        cache: "no-store",
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          action: "edit",
+          userId: user.id,
+          ...editForm,
+        }),
+      });
 
-    if (!data.success) {
-      toast.error("Error: " + (data.error || "Unknown error"));
-      return;
+      const data = await res.json();
+
+      if (!data.success) {
+        toast.error("Error: " + (data.error || "Unknown error"));
+        return;
+      }
+      toast.success("Profile updated successfully!");
+      setIsEditing(false);
+
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setErrors(error.message);
+      } else {
+        setErrors(String(error));
+      }
     }
-    toast.success("Profile updated successfully!");
-    setIsEditing(false);
-    
-  } catch (error: any) {
-    setErrors(error.message || "Something went wrong");
-  }
-};
+  };
 
-
-
-
-  
   const handlePasswordChange = async () => {
-    
-      const match = await bcrypt.compare(passwordForm.currentPassword, user.password);
+    const match = await bcrypt.compare(passwordForm.currentPassword, user.password);
 
-    if(!match){
+    if (!match) {
       toast.error("Invalid Current Password");
       return;
     }
@@ -124,45 +112,51 @@ export default function UserProfile() {
       return;
     }
     toast.success("Password changed successfully!");
- 
-        setPasswordForm({
+
+    setPasswordForm({
       currentPassword: '',
       newPassword: '',
       confirmPassword: ''
     });
 
-    try{
-       const res = await fetch("http://localhost:3000/api/user/edit",{
-        cache:'no-store',
-        method:"PUT",
-        headers:{
-         "Content-Type":"application/json",
+    try {
+      const res = await fetch("http://localhost:3000/api/user/edit", {
+        cache: 'no-store',
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({action: "changePassword",password: passwordForm.confirmPassword,userId: user.id,})
-       });
+        body: JSON.stringify({
+          action: "changePassword",
+          password: passwordForm.confirmPassword,
+          userId: user.id,
+        })
+      });
 
-       const data = await res.json();
-             if(!data.success){
-                setErrors("Error: " + "Invalid credentials");
-                        return;
-             }
-       setUser({
-               ...data.user,
-             });
+      const data = await res.json();
 
-    }catch(error: any)
-    {
-      setErrors(error.message)
+      if (!data.success) {
+        setErrors("Error: " + "Invalid credentials");
+        return;
+      }
+      setUser({
+        ...data.user,
+      });
+
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setErrors(error.message);
+      } else {
+        setErrors(String(error));
+      }
       return errors;
     }
-
-    
   };
 
-   if (!user) {
-    return notFound(); 
+  if (!user) {
+    return notFound();
   }
-      
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
@@ -190,7 +184,6 @@ export default function UserProfile() {
               >
                 Security
               </button>
-             
             </nav>
           </div>
 
@@ -199,10 +192,7 @@ export default function UserProfile() {
             <div className={styles.tabContent}>
               <div className={styles.sectionHeader}>
                 <h2 className={styles.sectionTitle}>Profile Information</h2>
-                <button
-                  onClick={handleEditToggle}
-                  className={styles.editButton}
-                >
+                <button onClick={handleEditToggle} className={styles.editButton}>
                   {isEditing ? <X className={styles.buttonIcon} /> : <Edit className={styles.buttonIcon} />}
                   {isEditing ? 'Cancel' : 'Edit Profile'}
                 </button>
@@ -218,7 +208,6 @@ export default function UserProfile() {
                       alt="Profile"
                       className={styles.profilePicture}
                     />
-                    
                   </div>
                 </div>
               </div>
@@ -249,13 +238,11 @@ export default function UserProfile() {
                   />
                 </div>
               </div>
+
               {/* Save Button */}
               {isEditing && (
                 <div className={styles.saveButtonContainer}>
-                  <button
-                    onClick={handleSaveProfile}
-                    className={styles.saveButton}
-                  >
+                  <button onClick={handleSaveProfile} className={styles.saveButton}>
                     <Save className={styles.buttonIcon} />
                     Save Changes
                   </button>
@@ -268,8 +255,8 @@ export default function UserProfile() {
           {activeTab === 'security' && (
             <div className={styles.tabContent}>
               <h2 className={styles.sectionTitle}>Change Password</h2>
-
               <div className={styles.passwordForm}>
+                {/* Current Password */}
                 <div className={styles.fieldGroup}>
                   <label className={styles.fieldLabel}>Current Password</label>
                   <div className={styles.passwordInputContainer}>
@@ -290,6 +277,7 @@ export default function UserProfile() {
                   </div>
                 </div>
 
+                {/* New Password */}
                 <div className={styles.fieldGroup}>
                   <label className={styles.fieldLabel}>New Password</label>
                   <div className={styles.passwordInputContainer}>
@@ -310,6 +298,7 @@ export default function UserProfile() {
                   </div>
                 </div>
 
+                {/* Confirm Password */}
                 <div className={styles.fieldGroup}>
                   <label className={styles.fieldLabel}>Confirm New Password</label>
                   <div className={styles.passwordInputContainer}>
@@ -330,37 +319,34 @@ export default function UserProfile() {
                   </div>
                 </div>
 
-                <button
-                  onClick={handlePasswordChange}
-                  className={styles.changePasswordButton}
-                >
+                <button onClick={handlePasswordChange} className={styles.changePasswordButton}>
                   Change Password
                 </button>
               </div>
             </div>
           )}
-
         </div>
       </div>
-                                <ToastContainer
-                      position="top-center"
-                      autoClose={5000}
-                      hideProgressBar={false}
-                      newestOnTop={false}
-                      closeOnClick={false}
-                      rtl={false}
-                      pauseOnFocusLoss
-                      draggable
-                      pauseOnHover
-                      theme="light"
-                      style={{
-                          top: "50%",
-                          left: "50%",
-                          transform: "translate(-50%, -50%)",
-                          textAlign: "center",
-                          width: "fit-content"
-                        }}
-                      />
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        style={{
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          textAlign: "center",
+          width: "fit-content"
+        }}
+      />
     </div>
   );
 }
