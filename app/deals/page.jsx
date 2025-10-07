@@ -95,14 +95,14 @@ export default function Deals() {
 
     const checkIsUserInable = async (product) => {
   if (!user) {
-    router.push('/signIn');
+    router.push("/signIn");
     return;
   }
 
-    const res= await fetch('/api/favorites', {
-    method: 'POST',
-    cache:'no-store',
-    headers: { 'Content-Type': 'application/json'},
+    const res= await fetch("/api/favorites", {
+    method: "POST",
+    cache:"no-store",
+    headers: { "Content-Type": "application/json"},
     body: JSON.stringify({ userId: user.id, product }),
   });
 
