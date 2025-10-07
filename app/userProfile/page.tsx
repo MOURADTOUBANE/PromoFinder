@@ -65,7 +65,7 @@ export default function UserProfile() {
     });
 
     try {
-      const res = await fetch("http://localhost:3000/api/user/edit", {
+      const res = await fetch("/api/user/edit", {
         cache: "no-store",
         method: "PUT",
         headers: {

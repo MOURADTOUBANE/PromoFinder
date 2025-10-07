@@ -58,7 +58,7 @@ const SignInForm: React.FC = () => {
     e.preventDefault();
     if (validateForm()) {
       try{
-      const res = await fetch("http://localhost:3000/api/auth/signin",{
+      const res = await fetch("/api/auth/signin",{
         cache:'no-store',
         method:"POST",
         headers:  {
