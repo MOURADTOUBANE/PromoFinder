@@ -151,7 +151,7 @@ const RegisterForm: React.FC = () => {
             <div className={styles.registerCard}>
               <div className="card-body ">
       
-                {/* Header */}
+               
                 <div className="text-center mb-4">
                   <div className="mb-3">
                     <div className={styles.registerIcon}>
@@ -164,7 +164,7 @@ const RegisterForm: React.FC = () => {
                   <p className={styles.registerSubtitle}>Join us today and get started</p>
                 </div>
 
-                {/* Name Fields */}
+          
                 <div className="row mb-3">
                   <div className=" mb-3">
                     <div className="position-relative">
@@ -183,7 +183,6 @@ const RegisterForm: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Email */}
                 <div className="mb-3">
                   <input
                     type="email"
@@ -198,7 +197,7 @@ const RegisterForm: React.FC = () => {
                   )}
                 </div>
 
-                {/* Password */}
+               
                 <div className="mb-3">
                   <input
                     type="password"
@@ -213,7 +212,7 @@ const RegisterForm: React.FC = () => {
                   )}
                 </div>
 
-                {/* Confirm Password */}
+               
                 <div className="mb-4">
                   <input
                     type="password"
@@ -247,7 +246,7 @@ const RegisterForm: React.FC = () => {
                   )}
                 </div>
 
-                {/* Submit Button */}
+              
                 <button
                   onClick={handleSubmit}
                   className={styles.registerSubmitBtn}
@@ -257,7 +256,7 @@ const RegisterForm: React.FC = () => {
                   Create Account
                 </button>
 
-                {/* Footer */}
+                
                 <div className="text-center">
                   <p className={styles.registerFooterText}>
                     Already have an account? <Link href="/signIn" className={styles.registerSigninLink}>Sign In</Link>

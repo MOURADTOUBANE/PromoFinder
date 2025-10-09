@@ -103,7 +103,7 @@ export default function Deals() {
     method: "POST",
     cache:"no-store",
     headers: { "Content-Type": "application/json"},
-    body: JSON.stringify({ userId: user.id, product }),
+    body: JSON.stringify({ userId: user.id,product }),
   });
 
     const data = await res.json();
