@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poetsen+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 .hero{
     border-bottom: 1px solid #e9ecef;
     padding-bottom: 20px;
@@ -8,6 +10,7 @@
   text-align: center;
   font-weight: 700;
   font-size: 30;
+  font-family: 'Poetsen One', sans-serif; 
 }
 
 
@@ -445,7 +448,7 @@
 }
 
 .favButton {
-  background-color: #ff4757;       /* لون أحمر جذاب */
+  background-color: #ff4757;      
   color: white;
   border: none;
   border-radius: 5px;
@@ -504,7 +507,7 @@
     height: auto;
   }
  .favButton {
-    width: 100%;                  /* full width on mobile */
+    width: 100%;                  
     font-size: 13px;
     padding: 10px 0;
   }

@@ -125,7 +125,7 @@ export default function Deals() {
                         <p>loading more...</p>
                     </div>
                 }
-                endMessage={<p style={{ textAlign: "center" }}>No more products 🚀</p>}
+                endMessage={<p style={{ textAlign: "center" }}>No more products.</p>}
             >
                 <div className={Styles.productsGrid}>
                     {products.map((product) => (
