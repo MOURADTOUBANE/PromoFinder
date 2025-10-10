@@ -8,9 +8,10 @@
 .title{
   margin-top: 100px;
   text-align: center;
-  font-weight: 700;
   font-size: 30;
-  font-family: 'Poetsen One', sans-serif; 
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
 
